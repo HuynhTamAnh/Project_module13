@@ -1,7 +1,7 @@
 const gundams = [
   {
     id: "product1",
-    img1: "/assets/images/product1.jpg",
+    img1: "https://gundamshop.vn/wp-content/uploads/2021/05/M%C3%B4-h%C3%ACnh-MG-ZGMF-X19A-Infinite-Justice-Gundam-Bandai-6.jpg",
     name: "Daban 1/100 MG Infinity Justice Gundam",
     price: "680,000VNĐ",
     type: "mg1100",
@@ -127,7 +127,8 @@ function loadAdmin() {
                       <div class = "card-bottom">
                       <p class="card-text">${gundams[i].price}</p>
                       <button class="btn btn-primary add-to-cart-btn" data-id="product1" data-image="https://gundamshop.vn/wp-content/uploads/2021/05/M%C3%B4-h%C3%ACnh-MG-ZGMF-X19A-Infinite-Justice-Gundam-Bandai-6.jpg" class="buttonAdd"  onclick="renderProductDetail('${gundams[i].id}')">More information...</button>
-                      <button class="btn btn-primary add-to-cart-btn" data-id="product1" data-image="https://gundamshop.vn/wp-content/uploads/2021/05/M%C3%B4-h%C3%ACnh-MG-ZGMF-X19A-Infinite-Justice-Gundam-Bandai-6.jpg" class="buttonAdd"  onclick="deleteProduct('${gundams[i].id}')">Delete Item</button>
+                      <button class="btn btn-danger" onclick="deleteProduct('${gundams[i].id}')">Xóa sản phẩm</button>
+
                       <button class="btn btn-primary add-to-cart-btn" data-id="product1" data-image="https://gundamshop.vn/wp-content/uploads/2021/05/M%C3%B4-h%C3%ACnh-MG-ZGMF-X19A-Infinite-Justice-Gundam-Bandai-6.jpg" class="buttonAdd"  onclick="renderProductDetail('${gundams[i].id}')">Edit Item</button>
 
                       </div> 
@@ -342,21 +343,9 @@ function calculateTotal() {
   return total;
 }
 
-// Hàm xoá sản phẩm
-function deleteProduct(id) {
-  // Xác nhận từ người dùng trước khi xoá
-  if (confirm("Bạn có chắc chắn muốn xoá sản phẩm này không?")) {
-    // Xoá sản phẩm trong mảng gundams
-    let index = gundams.findIndex((product) => product.id === id);
-    if (index !== -1) {
-      gundams.splice(index, 1);
-      // Cập nhật lại giao diện hiển thị danh sách sản phẩm
-      loadAdmin();
-      // Lưu lại danh sách sản phẩm sau khi xoá vào localStorage
-      localStorage.setItem("ListProducts", JSON.stringify(gundams));
-      alert("Sản phẩm đã được xoá thành công.");
-    } else {
-      alert("Không tìm thấy sản phẩm để xoá.");
-    }
+function removeProductCardFromMainPage(id) {
+  let productCard = document.getElementById(id);
+  if (productCard) {
+    productCard.remove();
   }
 }
