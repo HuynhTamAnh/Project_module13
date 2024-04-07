@@ -97,40 +97,64 @@ function load() {
   var out = "";
   for (let i = 0; i < gundams.length; i++) {
     out += `<div class="col-md-3 mb-4 d-flex justify-content-center">
-      <div class="card" style="width: 18rem;">
-          <img src="${gundams[i].img1}" class="card-img-top" alt="Product 1 Image" style="height: 300px;")" >
-          <div class="card-body">
-              <h5 class="card-title">${gundams[i].name}</h5>
-              <hr>
+              <div class="card" style="width: 18rem;">
+                  <img src="${gundams[i].img1}" class="card-img-top" alt="Product 1 Image" style="height: 300px;")" >
+                  <div class="card-body">
+                      <h5 class="card-title">${gundams[i].name}</h5>
+                      <hr>
 
-              <div class = "card-bottom">
-              <p class="card-text">${gundams[i].price}</p>
-              <button class="btn btn-primary add-to-cart-btn" data-id="product1" data-image="https://gundamshop.vn/wp-content/uploads/2021/05/M%C3%B4-h%C3%ACnh-MG-ZGMF-X19A-Infinite-Justice-Gundam-Bandai-6.jpg" class="buttonAdd"  onclick="renderProductDetail('${gundams[i].id}')">More information...</button>
-              </div> 
-             </div>
-      </div>
-    </div>`;
+                      <div class = "card-bottom">
+                      <p class="card-text">${gundams[i].price}</p>
+                      <button class="btn btn-primary add-to-cart-btn" data-id="product1" data-image="https://gundamshop.vn/wp-content/uploads/2021/05/M%C3%B4-h%C3%ACnh-MG-ZGMF-X19A-Infinite-Justice-Gundam-Bandai-6.jpg" class="buttonAdd"  onclick="renderProductDetail('${gundams[i].id}')">More information...</button>
+                      </div> 
+                    </div>
+              </div>
+            </div>`;
   }
   document.getElementById("load").innerHTML = out;
+}
+
+function loadAdmin() {
+  var out = "";
+  for (let i = 0; i < gundams.length; i++) {
+    out += `<div class="col-md-3 mb-4 d-flex justify-content-center">
+              <div class="card" style="width: 18rem;">
+                  <img src="${gundams[i].img1}" class="card-img-top" alt="Product 1 Image" style="height: 300px;")" >
+                  <div class="card-body">
+                      <h5 class="card-title">${gundams[i].name}</h5>
+                      <hr>
+
+                      <div class = "card-bottom">
+                      <p class="card-text">${gundams[i].price}</p>
+                      <button class="btn btn-primary add-to-cart-btn" data-id="product1" data-image="https://gundamshop.vn/wp-content/uploads/2021/05/M%C3%B4-h%C3%ACnh-MG-ZGMF-X19A-Infinite-Justice-Gundam-Bandai-6.jpg" class="buttonAdd"  onclick="renderProductDetail('${gundams[i].id}')">More information...</button>
+                      <button class="btn btn-primary add-to-cart-btn" data-id="product1" data-image="https://gundamshop.vn/wp-content/uploads/2021/05/M%C3%B4-h%C3%ACnh-MG-ZGMF-X19A-Infinite-Justice-Gundam-Bandai-6.jpg" class="buttonAdd"  onclick="deleteProduct('${gundams[i].id}')">Delete Item</button>
+                      <button class="btn btn-primary add-to-cart-btn" data-id="product1" data-image="https://gundamshop.vn/wp-content/uploads/2021/05/M%C3%B4-h%C3%ACnh-MG-ZGMF-X19A-Infinite-Justice-Gundam-Bandai-6.jpg" class="buttonAdd"  onclick="renderProductDetail('${gundams[i].id}')">Edit Item</button>
+
+                      </div> 
+                    </div>
+              </div>
+            </div>`;
+  }
+  document.getElementById("loadAdmin").innerHTML = out;
 }
 
 function renderListProduct(categories) {
   var out = "";
   for (let i = 0; i < categories.length; i++) {
     out += `<div class="col-md-3 mb-4 d-flex justify-content-center">
-      <div class="card" style="width: 18rem;">
-          <img src="${categories[i].img1}" class="card-img-top" alt="Product 1 Image" style="height: 300px;")" >
-          <div class="card-body">
-              <h5 class="card-title">${categories[i].name}</h5>
-              <hr>
+              <div class="card" style="width: 18rem;">
+                  <img src="${categories[i].img1}" class="card-img-top" alt="Product 1 Image" style="height: 300px;")" >
+                  <div class="card-body">
+                      <h5 class="card-title">${categories[i].name}</h5>
+                      <hr>
 
-              <div class = "card-bottom">
-              <p class="card-text">${categories[i].price}</p>
-              <button class="btn btn-primary add-to-cart-btn" data-id="product1" data-image="https://gundamshop.vn/wp-content/uploads/2021/05/M%C3%B4-h%C3%ACnh-MG-ZGMF-X19A-Infinite-Justice-Gundam-Bandai-6.jpg" class="buttonAdd"  onclick="renderProductDetail('${categories[i].id}')">More information...</button>
-              </div> 
-             </div>
-      </div>
-    </div>`;
+                      <div class = "card-bottom">
+                      <p class="card-text">${categories[i].price}</p>
+                      <button class="btn btn-primary add-to-cart-btn" data-id="product1" data-image="https://gundamshop.vn/wp-content/uploads/2021/05/M%C3%B4-h%C3%ACnh-MG-ZGMF-X19A-Infinite-Justice-Gundam-Bandai-6.jpg" class="buttonAdd"  onclick="renderProductDetail('${categories[i].id}')">More information...</button>
+                      </div> 
+                    </div>
+              </div>
+            </div>`;
   }
   document.getElementById("load").innerHTML = out;
 }
@@ -207,18 +231,18 @@ function renderProductDetail(idProduct) {
   });
   let result = "";
   result += `
-    <div class="container cart-container">
-      <div class="left">
-          <img src="${productItem.img1}" alt="ảnh gundam">
-      </div>
-  
-      <div class="right">
-          <h2>${productItem.name}</h2><hr>
-          <h5>${productItem.price}</h5>
-          <button class="btn btn-primary add-to-cart-btn"  onclick="addToCart('${productItem.id}')" >Thêm vào giỏ hàng</button>
-      </div>
-    </div>
-    `;
+            <div class="container cart-container">
+              <div class="left">
+                  <img src="${productItem.img1}" alt="ảnh gundam">
+              </div>
+          
+              <div class="right">
+                  <h2>${productItem.name}</h2><hr>
+                  <h5>${productItem.price}</h5>
+                  <button class="btn btn-primary add-to-cart-btn"  onclick="addToCart('${productItem.id}')" >Thêm vào giỏ hàng</button>
+              </div>
+            </div>
+            `;
   document.querySelector(".content-container").style.display = "flex";
 
   document.querySelector(".content-container").innerHTML = result;
@@ -239,22 +263,30 @@ function showCart() {
     cartHTML += "<ul>";
     cartItems.forEach(function (item) {
       cartHTML += `
-            <li>
-              <div>
-                  <img src="${item.img1}" alt="${item.name}">
-              </div>
-              <div class="details">
-                  <h4>${item.name}</h4>
-                  <p> Money: ${item.price}</p>
-                  <div>
-                  <button onclick="decreaseQuantity('${item.id}')">-</button>
-                  <span id="${item.id}-quantity">${item.quantity || 1}</span>
-                  <button onclick="increaseQuantity('${item.id}')">+</button>
-                  <button onclick="removeItem('${item.id}')">Xóa</button>
-                  </div>
-              </div>
-            </li>
-        `;
+                    <li>
+                      <div>
+                          <img src="${item.img1}" alt="${item.name}">
+                      </div>
+                      <div class="details">
+                          <h4>${item.name}</h4>
+                          <p> Money: ${item.price}</p>
+                          <div>
+                          <button onclick="decreaseQuantity('${
+                            item.id
+                          }')">-</button>
+                          <span id="${item.id}-quantity">${
+        item.quantity || 1
+      }</span>
+                          <button onclick="increaseQuantity('${
+                            item.id
+                          }')">+</button>
+                          <button onclick="removeItem('${
+                            item.id
+                          }')">Xóa</button>
+                          </div>
+                      </div>
+                    </li>
+                `;
     });
     cartHTML += "</ul>";
   }
@@ -308,4 +340,23 @@ function calculateTotal() {
   });
 
   return total;
+}
+
+// Hàm xoá sản phẩm
+function deleteProduct(id) {
+  // Xác nhận từ người dùng trước khi xoá
+  if (confirm("Bạn có chắc chắn muốn xoá sản phẩm này không?")) {
+    // Xoá sản phẩm trong mảng gundams
+    let index = gundams.findIndex((product) => product.id === id);
+    if (index !== -1) {
+      gundams.splice(index, 1);
+      // Cập nhật lại giao diện hiển thị danh sách sản phẩm
+      loadAdmin();
+      // Lưu lại danh sách sản phẩm sau khi xoá vào localStorage
+      localStorage.setItem("ListProducts", JSON.stringify(gundams));
+      alert("Sản phẩm đã được xoá thành công.");
+    } else {
+      alert("Không tìm thấy sản phẩm để xoá.");
+    }
+  }
 }
